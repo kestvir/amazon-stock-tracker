@@ -1,27 +1,11 @@
 {
-  "name": "typescript-template",
-  "version": "1.0.4",
-  "description": "A complete Node.js project template using TypeScript and following general best practices.",
-  "keywords": [
-    "typescript",
-    "template"
-  ],
-  "author": {
-    "name": "Chris Wells",
-    "url": "https://chriswells.io"
-  },
-  "license": "BSD-3-Clause",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/chriswells0/node-typescript-template.git"
-  },
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "files": [
-    "dist/"
-  ],
+  "name": "amazon-price-tracker",
+  "version": "1.0.0",
+  "description": "Amazon price tracker server",
+  "license": "MIT",
   "scripts": {
-    "start": "nodemon --ignore db.json --exec ts-node src/index.ts"
+    "start": "nodemon --ignore db.json --exec ts-node src/index.ts",
+    "build": "tsc -p ."
   },
   "devDependencies": {
     "@types/express": "^4.17.12",
@@ -33,11 +17,6 @@
     "ts-node": "^10.0.0",
     "tslint": "^6.0.0",
     "typescript": "^4.0.3"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
   },
   "dependencies": {
     "dotenv": "^10.0.0",
