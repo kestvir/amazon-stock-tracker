@@ -52,7 +52,7 @@ export const ProductList: React.FC<ProductListProps> = ({}) => {
                 {updateId === id ? (
                   <>
                     {isLoadingUpdate ? (
-                      <span>Loading update...</span>
+                      <span className="loading">Loading update...</span>
                     ) : (
                       <input
                         type="text"
