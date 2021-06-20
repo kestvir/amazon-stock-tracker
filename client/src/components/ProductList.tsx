@@ -5,6 +5,13 @@ import {
   useUpdateProductMutation,
 } from '../redux/api';
 
+const shortenTitleIfTooLong = (title: string) => {
+  if (title.length <= 30) {
+    return title;
+  }
+  return title.slice(0, 30) + '...';
+};
+
 interface ProductListProps {}
 
 export const ProductList: React.FC<ProductListProps> = ({}) => {
@@ -43,16 +50,22 @@ export const ProductList: React.FC<ProductListProps> = ({}) => {
               <li key={id} className="product grid">
                 <img src={imgURL} alt="product image" />
                 {updateId === id ? (
-                  <input
-                    type="text"
-                    value={updateTitle}
-                    onChange={(e) => setUpdateTitle(e.target.value)}
-                    onBlur={() => updateProductOnBlur(id, title)}
-                  />
+                  <>
+                    {isLoadingUpdate ? (
+                      <span>Loading update...</span>
+                    ) : (
+                      <input
+                        type="text"
+                        value={updateTitle}
+                        onChange={(e) => setUpdateTitle(e.target.value)}
+                        onBlur={() => updateProductOnBlur(id, title)}
+                      />
+                    )}
+                  </>
                 ) : (
                   <h2 className="product__title">
                     <a href={productURL} target="_blank">
-                      {title}
+                      {shortenTitleIfTooLong(title)}
                     </a>
                   </h2>
                 )}
