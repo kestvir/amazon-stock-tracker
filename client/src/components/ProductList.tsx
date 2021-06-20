@@ -41,7 +41,9 @@ export const ProductList: React.FC<ProductListProps> = ({}) => {
   return (
     <div className="products">
       {result.isLoading && <h1>'LOADING...'</h1>}
-      {result.isError && JSON.stringify(result.error)}
+      {result.isError && (
+        <span className="error">JSON.stringify(result.error)</span>
+      )}
       {result.isSuccess && (
         <ul>
           {result.data.map((product) => {
