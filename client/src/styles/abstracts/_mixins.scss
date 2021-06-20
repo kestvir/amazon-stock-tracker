@@ -1,0 +1,24 @@
+@mixin button-specifics(
+    $padding,
+    $background,
+    $color,
+    $font-weight,
+    $font-size,
+    $text-transform,
+    $transition,
+    $border: none
+) {
+    padding: $padding;
+    background-color: $background;
+    color: $color;
+    font-weight: $font-weight;
+    font-size: $font-size;
+    text-transform: $text-transform;
+    transition: $transition;
+    @if $border != none {
+        border: $border;
+    }
+    &:hover {
+        background-color: darken($background, 10%);
+    }
+}

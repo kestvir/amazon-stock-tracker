@@ -40,8 +40,8 @@ export const ProductList: React.FC<ProductListProps> = ({}) => {
           {result.data.map((product) => {
             const { id, imgURL, title, productURL, inStock } = product;
             return (
-              <li key={id} className="product">
-                <img src={imgURL} alt="product image" />\
+              <li key={id} className="product grid">
+                <img src={imgURL} alt="product image" />
                 {updateId === id ? (
                   <input
                     type="text"
@@ -66,13 +66,13 @@ export const ProductList: React.FC<ProductListProps> = ({}) => {
                 {updateId !== id && (
                   <div className="product__options">
                     <button
-                      className="product__option-update"
+                      className="product__option-update-button"
                       onClick={() => setupUpdateState(id, title)}
                     >
                       Update
                     </button>
                     <button
-                      className="product__option-delete"
+                      className="product__option-delete-button"
                       onClick={() => deleteProduct(id)}
                       disabled={isLoadingDelete ? true : false}
                     >

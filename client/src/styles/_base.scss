@@ -1,18 +1,9 @@
-$main-color: #4ecca3;
-$dark-grey: #232931;
-$grey: #393e46;
-$light-grey: #eee;
-
 *,
 ::after,
 ::before {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-.test {
-    color: red;
 }
 
 body {
@@ -32,4 +23,26 @@ h3 {
 a {
     color: $light-grey;
     text-decoration: none;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+input {
+    background-color: $grey;
+    outline: none;
+    color: #fff;
+    height: 2.5rem;
+    font-size: 1.25rem;
+    border: 2px solid $light-grey;
+    padding-left: 0.2rem;
+}
+
+img {
+    max-width: 100%;
+    height: 25rem;
+    object-fit: cover;
 }

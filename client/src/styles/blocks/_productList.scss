@@ -1,0 +1,31 @@
+.products {
+    align-self: flex-start;
+    width: 100%;
+    text-align: center;
+}
+
+.product {
+    &__in-stock--true {
+        color: green;
+    }
+    &__in-stock--false {
+        color: red;
+    }
+
+    &__option-update-button {
+        margin-right: 0.8rem;
+    }
+    &__option-update-button,
+    &__option-delete-button {
+        @include button-specifics(
+            0.3rem 0.56rem,
+            $grey,
+            #fff,
+            700,
+            1rem,
+            uppercase,
+            background-color 0.3s,
+            2px solid $light-grey
+        );
+    }
+}
