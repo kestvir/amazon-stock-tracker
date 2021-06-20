@@ -1,0 +1,20 @@
+.products {
+    align-self: flex-start;
+    width: 100%;
+}
+
+.product {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    &__in-stock--true {
+        color: green;
+    }
+    &__in-stock--false {
+        color: red;
+    }
+
+    &__option-update {
+        margin-right: 0.8rem;
+    }
+}

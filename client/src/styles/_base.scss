@@ -1,0 +1,35 @@
+$main-color: #4ecca3;
+$dark-grey: #232931;
+$grey: #393e46;
+$light-grey: #eee;
+
+*,
+::after,
+::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.test {
+    color: red;
+}
+
+body {
+    background: $dark-grey;
+}
+
+ul {
+    list-style-type: none;
+}
+
+h1,
+h2,
+h3 {
+    color: $light-grey;
+}
+
+a {
+    color: $light-grey;
+    text-decoration: none;
+}
