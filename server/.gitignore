@@ -3,7 +3,12 @@
 coverage/
 dist/
 node_modules/
-.env
 
 # Project files:
 *.sublime-*
+
+# Misc
+.env
+db.json
+
+
