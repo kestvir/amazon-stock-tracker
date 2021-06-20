@@ -5,12 +5,10 @@ const smtpTransport = nodemailer.createTransport({
   auth: { user: process.env.EMAIL, pass: process.env.PASSWORD },
 });
 
-console.log({ user: process.env.EMAIL, pass: process.env.PASSWORD });
-
 export async function runSendMail(title: string, url: string) {
   try {
     await smtpTransport.sendMail({
-      from: "v.kestutis123@gmail.com",
+      from: process.env.EMAIL,
       to: "v.kestutis123@gmail.com",
       subject: `${title} is in store.`,
       html: `${title} is in store! ${url}>`,
