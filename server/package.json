@@ -4,7 +4,8 @@
   "description": "Amazon price tracker server",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon --ignore db.json --exec ts-node src/index.ts",
+    "start": "node build/dist/index.js",
+    "dev": "nodemon --ignore db.json --exec ts-node src/index.ts",
     "build": "tsc -p ."
   },
   "devDependencies": {
@@ -12,7 +13,6 @@
     "@types/node": "^15.0.1",
     "@types/node-cron": "^2.0.3",
     "@types/nodemailer": "^6.4.2",
-    "@types/uuid": "^8.3.0",
     "nodemon": "^2.0.7",
     "ts-node": "^10.0.0",
     "tslint": "^6.0.0",
@@ -21,10 +21,9 @@
   "dependencies": {
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "lowdb": "github:dankreiger/lowdb#chore/esm-cjs-hybrid-WITH-LIB",
+    "mongoose": "^5.12.14",
     "node-cron": "^3.0.0",
     "nodemailer": "^6.6.2",
-    "puppeteer": "^10.0.0",
-    "uuid": "^8.3.2"
+    "puppeteer": "^10.0.0"
   }
 }

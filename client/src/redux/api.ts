@@ -1,7 +1,8 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export type Product = {
-  id: string;
+  _id: string;
+  __v: number;
   productURL: string;
   imgURL: string;
   title: string;
@@ -21,7 +22,10 @@ export const api = createApi({
       providesTags: (result) =>
         result
           ? [
-              ...result.map(({ id }) => ({ type: 'Product' as const, id })),
+              ...result.map(({ _id }) => ({
+                type: 'Product' as const,
+                id: _id,
+              })),
               { type: 'Product', id: 'LIST' },
             ]
           : [{ type: 'Product', id: 'LIST' }],
@@ -34,13 +38,15 @@ export const api = createApi({
       }),
       invalidatesTags: [{ type: 'Product', id: 'LIST' }],
     }),
-    updateProduct: build.mutation<{}, Pick<Product, 'id'> & Partial<Product>>({
-      query: ({ id, ...patch }) => ({
-        url: `products/${id}`,
+    updateProduct: build.mutation<{}, Pick<Product, '_id'> & Partial<Product>>({
+      query: ({ _id, ...patch }) => ({
+        url: `products/${_id}`,
         method: 'PUT',
         body: patch,
       }),
-      invalidatesTags: (result, error, { id }) => [{ type: 'Product', id }],
+      invalidatesTags: (result, error, { _id }) => [
+        { type: 'Product', id: _id },
+      ],
     }),
     deleteProduct: build.mutation<{}, string>({
       query(id) {
@@ -49,7 +55,7 @@ export const api = createApi({
           method: 'DELETE',
         };
       },
-      invalidatesTags: (result, error, id) => [{ type: 'Product', id }],
+      invalidatesTags: (result, error, _id) => [{ type: 'Product', id: _id }],
     }),
   }),
 });

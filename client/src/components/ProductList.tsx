@@ -33,25 +33,25 @@ export const ProductList: React.FC<ProductListProps> = ({}) => {
     console.log(updateTitle);
     if (currentTitle === updateTitle) return;
     if (!updateTitle.trim()) return;
-    updateProduct({ id, title: updateTitle });
+    updateProduct({ _id: id, title: updateTitle });
     setUpdateId(null);
     setUpdateTitle('');
   }
 
   return (
     <div className="products">
-      {result.isLoading && <h1>'LOADING...'</h1>}
+      {result.isLoading && <h1>LOADING...</h1>}
       {result.isError && (
-        <span className="error">JSON.stringify(result.error)</span>
+        <span className="error">{JSON.stringify(result.error)}</span>
       )}
       {result.isSuccess && (
         <ul>
           {result.data.map((product) => {
-            const { id, imgURL, title, productURL, inStock } = product;
+            const { _id, imgURL, title, productURL, inStock } = product;
             return (
-              <li key={id} className="product grid">
+              <li key={_id} className="product grid">
                 <img src={imgURL} alt="product image" />
-                {updateId === id ? (
+                {updateId === _id ? (
                   <>
                     {isLoadingUpdate ? (
                       <span className="loading">Loading update...</span>
@@ -60,7 +60,7 @@ export const ProductList: React.FC<ProductListProps> = ({}) => {
                         type="text"
                         value={updateTitle}
                         onChange={(e) => setUpdateTitle(e.target.value)}
-                        onBlur={() => updateProductOnBlur(id, title)}
+                        onBlur={() => updateProductOnBlur(_id, title)}
                       />
                     )}
                   </>
@@ -78,17 +78,17 @@ export const ProductList: React.FC<ProductListProps> = ({}) => {
                 >
                   {inStock ? 'In stock' : 'Not in stock'}
                 </h3>
-                {updateId !== id && (
+                {updateId !== _id && (
                   <div className="product__options">
                     <button
                       className="product__option-update-button"
-                      onClick={() => setupUpdateState(id, title)}
+                      onClick={() => setupUpdateState(_id, title)}
                     >
                       Update
                     </button>
                     <button
                       className="product__option-delete-button"
-                      onClick={() => deleteProduct(id)}
+                      onClick={() => deleteProduct(_id)}
                       disabled={isLoadingDelete ? true : false}
                     >
                       {isLoadingDelete ? 'Loading...' : 'Delete'}

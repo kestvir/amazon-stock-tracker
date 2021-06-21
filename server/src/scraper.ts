@@ -1,6 +1,5 @@
 import puppeteer from "puppeteer";
-import db from "./db";
-import { Product } from "./types";
+import Product from "./product";
 import { runSendMail } from "./mail";
 
 export async function scrapeProduct(
@@ -41,17 +40,18 @@ export async function scrapeProduct(
 }
 
 export async function updateDB() {
-  if (db.data) {
-    const { products } = db.data;
-    const newProductData: Product[] = [];
-    if (!products.length) return;
-    products.forEach(async (product) => {
-      const { productURL } = product;
-      const scrapedProductData = await scrapeProduct(productURL, product.title);
-      const productObj = { ...product, ...scrapedProductData };
-      newProductData.push(productObj);
-    });
-    db.data.products = newProductData;
-    db.write();
-  }
+  const products = await Product.find();
+  if (!products.length) return;
+  products.forEach(async (product) => {
+    const { productURL, title, inStock, id } = product;
+    const scrapedProductData = await scrapeProduct(productURL, title);
+    if (scrapedProductData.inStock !== inStock)
+      try {
+        await Product.findByIdAndUpdate(id, {
+          inStock: scrapedProductData.inStock,
+        });
+      } catch (error) {
+        console.log(error);
+      }
+  });
 }
