@@ -6,10 +6,10 @@
 
 .product {
     &__in-stock--true {
-        color: green;
+        color: $accent-color-1;
     }
     &__in-stock--false {
-        color: red;
+        color: $accent-color-2;
     }
 
     &__option-update-button {

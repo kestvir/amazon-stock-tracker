@@ -1,5 +1,5 @@
 .add-product-form {
-    margin-bottom: 1rem;
+    margin: 1rem 0;
     width: 50vw;
     display: flex;
     flex-direction: column;
@@ -9,14 +9,6 @@
         margin-bottom: 1rem;
     }
     &__submit-button {
-        @include button-specifics(
-            0.5rem 0.78rem,
-            $main-accent-color,
-            #fff,
-            700,
-            1.5rem,
-            uppercase,
-            background-color 0.3s
-        );
+        @include button-specifics(0.5rem 0.78rem, $accent-color-1, #fff, 700, 1.5rem, uppercase, background-color 0.3s);
     }
 }
